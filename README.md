@@ -32,11 +32,15 @@ Either replace the MongoDB connection string on line 11 in `/server/server.js` w
 
 Local connection string ( port is 27017 by default ):
 
-`mongodb://localhost:<port>/twitterDB`
+```
+mongodb://localhost:<port>/twitterDB
+```
 
 This option requires an extra step when using the project as you will have to run MongoDB, it's simple just enter the following command in your terminal:
 
-`> mongod`
+```
+> mongod
+```
 
 Remote connection string:
 
@@ -46,7 +50,9 @@ Read [this](https://docs.mongodb.com/manual/reference/connection-string/) for mo
 
 Once all npm packages are installed run the following command in both `/client` & `/server`:
 
-`> npm start`
+```
+> npm start
+```
 
 ## Description
 
@@ -68,8 +74,6 @@ As of now, my plans include:
 - Improve the User data model, allowing for a biography and profile picture; also including email in the sign up process that must be verified before utilising protected routes
 
 ## Known Bugs
-
-The only bug that I am aware of through my testing, is a memory leak of unmounted components, namely, `Feed.js` and `ProfileFeed.js`.
 
 ## Technologies Used
 

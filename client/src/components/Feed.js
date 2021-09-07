@@ -1,6 +1,6 @@
 import './Feed.css';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import TweetWidget from './TweetWidget';
@@ -9,11 +9,21 @@ import FeedForm from './FeedForm';
 function Feed({ user, getToken }) {
   const [tweets, setTweets] = useState([]);
 
+  let _isMounted = useRef(true);
+
   useEffect(() => {
     axios
       .get('/api/tweets')
-      .then((res) => setTweets(res.data.reverse()))
+      .then((res) => {
+        if (_isMounted.current) {
+          setTweets(res.data.reverse());
+        }
+      })
       .catch((err) => console.log(err.message));
+
+    return () => {
+      _isMounted.current = false;
+    };
   }, []);
 
   return (
