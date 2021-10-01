@@ -1,10 +1,10 @@
-import './FeedForm.css';
+import './TweetForm.css';
 
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-function FeedForm({ user }) {
+function TweetForm({ user }) {
   const [content, setContent] = useState('');
 
   const history = useHistory();
@@ -44,18 +44,19 @@ function FeedForm({ user }) {
   };
 
   return (
-    <form id="feed-form" onSubmit={handleSubmit}>
+    <form id="feed-form" className="feed-form" onSubmit={handleSubmit}>
       <textarea
+        className="tweet-input"
         value={content}
         onChange={handleContentChange}
         placeholder="What's Happening?"
         maxLength="280"
       ></textarea>
-      <button id="submit-tweet" type="submit">
+      <button id="submit-tweet" className="submit-tweet" type="submit">
         tweet
       </button>
     </form>
   );
 }
 
-export default FeedForm;
+export default TweetForm;

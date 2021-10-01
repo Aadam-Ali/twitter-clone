@@ -1,43 +1,44 @@
-import './Feed.css';
+import './UserFeed.css';
 
-import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-
-import TweetWidget from './TweetWidget';
-import FeedForm from './FeedForm';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 
-function ProfileFeed({ user }) {
+import axios from 'axios';
+
+import TweetContainer from '../TweetContainer/TweetContainer';
+import Title from '../Title/Title';
+
+function UserFeed({ user }) {
   const [tweets, setTweets] = useState([]);
   const location = useLocation();
 
-  let _isMounted = useRef(true);
-
   useEffect(() => {
+    let isRendered = true;
     axios
       .get(`/api/tweets${location.pathname}`)
       .then((res) => {
-        if (_isMounted.current) {
+        if (isRendered) {
           setTweets(res.data.reverse());
         }
       })
       .catch((err) => console.log(err.message));
-
     return () => {
-      _isMounted.current = false;
+      isRendered = false;
     };
-  });
+  }, [location.pathname]);
 
   return (
-    <div id="feed">
-      <FeedForm user={user} />
+    <div id="feed" className="feed">
+      <Title />
       {tweets.map((el) => {
         return (
-          <TweetWidget
+          <TweetContainer
             key={el._id}
             id={el._id}
             username={el.username}
             content={el.content}
+            likes={el.likes}
+            user={user}
           />
         );
       })}
@@ -45,4 +46,4 @@ function ProfileFeed({ user }) {
   );
 }
 
-export default ProfileFeed;
+export default UserFeed;

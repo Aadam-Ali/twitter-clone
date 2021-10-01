@@ -1,5 +1,5 @@
-#feed {
-  width: 50%;
+.feed {
+  width: 35%;
   height: 100vh;
   overflow-y: scroll;
 }

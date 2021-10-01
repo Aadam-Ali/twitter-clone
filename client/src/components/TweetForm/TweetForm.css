@@ -1,31 +1,32 @@
-#feed-form {
+.feed-form {
   border-bottom: 1px solid #e5e5e5;
 }
 
-#feed-form > textarea {
+.tweet-input {
   width: 100%;
   padding: 1rem;
+  font-size: 1.1rem;
   resize: none;
   border: none;
 }
 
-textarea:focus {
+.tweet-input:focus {
   outline: none;
   border: none;
 }
 
-#submit-tweet {
+.submit-tweet {
   border-radius: 62.5rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border: none;
   right: 0;
   margin: 1rem;
+  background-color: #1da1f2;
+  color: #ffffff;
   transition: 0.25s;
 }
 
-#submit-tweet:hover {
-  background-color: #e5e5e5;
+.submit-tweet:hover {
   border-radius: 62.5rem;
-  background-color: #1da1f2;
-  color: white;
+  background-color: #0d93e6;
 }

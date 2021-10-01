@@ -1,0 +1,60 @@
+.form-register-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(45deg, #1da1f2, #fff);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 2rem;
+  padding: 3rem;
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 1px 1px 5px #333;
+}
+
+.form-control {
+  margin: 0.625rem 0;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border: 0.0625rem solid #b9b9b9;
+  border-radius: 62.5rem;
+  resize: none;
+}
+
+.content-input {
+  height: 40rem;
+}
+
+.form-control:focus {
+  outline: 0.01rem solid #1da1f2;
+}
+
+.submit-btn {
+  font-size: 1rem;
+  height: 2rem;
+  width: 100%;
+  margin-top: 0.625rem;
+  margin-right: auto;
+  border-radius: 62.5rem;
+  border: none;
+  transition: 0.25s;
+}
+
+.submit-btn:hover {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.title,
+.message {
+  margin: 0 auto;
+}
+
+.message > a {
+  text-decoration: underline;
+  color: #1da1f2;
+}

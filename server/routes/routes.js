@@ -79,6 +79,7 @@ router.post('/tweet', verify, async (req, res) => {
     content: req.body.content,
     username: req.body.username,
     date: new Date(),
+    likes: [],
   });
 
   try {
@@ -97,6 +98,21 @@ router.get('/tweets', async (req, res) => {
 router.get('/tweets/:username', async (req, res) => {
   const tweets = await Tweet.find({ username: req.params.username });
   res.send(tweets);
+});
+
+router.put('/:id/like', verify, async (req, res) => {
+  try {
+    const tweet = await Tweet.findById(req.body.postID);
+    if (!tweet.likes.includes(req.body.userID)) {
+      await tweet.updateOne({ $push: { likes: req.body.userID } });
+      res.status(200).json(1);
+    } else {
+      await tweet.updateOne({ $pull: { likes: req.body.userID } });
+      res.status(200).json(-1);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

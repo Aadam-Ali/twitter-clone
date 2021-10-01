@@ -8,10 +8,11 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import Sidebar from './components/Sidebar';
-import Feed from './components/Feed';
-import ProfileFeed from './components/ProfileFeed';
-import Login from './components/Login';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import Sidebar from './components/Sidebar/Sidebar';
+import Feed from './components/Feed/Feed';
+import UserFeed from './components/UserFeed/UserFeed';
 
 function App() {
   const [user, setUser] = useState({});
@@ -31,19 +32,28 @@ function App() {
             setToken={setTokenLocalStorage}
           />
         </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
         <Route path="/home">
           {isAuthenticated === false && (
             <Redirect to={{ pathname: '/login' }} />
           )}
           <div id="Home">
-            <Sidebar username={user.username} />
+            <Sidebar
+              username={user.username}
+              isAuthenticated={isAuthenticated}
+            />
             <Feed user={user} />
           </div>
         </Route>
         <Route path="/:username">
           <div id="Profile">
-            <Sidebar username={user.username} />
-            <ProfileFeed user={user} />
+            <Sidebar
+              username={user.username}
+              isAuthenticated={isAuthenticated}
+            />
+            <UserFeed user={user} />
           </div>
         </Route>
         <Route exact path="/">

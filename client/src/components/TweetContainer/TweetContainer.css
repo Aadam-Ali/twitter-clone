@@ -1,0 +1,38 @@
+.tweet-container {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1rem;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.tweet-container:hover {
+  background-color: #f9f9f9;
+}
+
+.like-button {
+  color: #d3d3d3;
+}
+
+.like-button:hover {
+  color: #ff6961;
+  cursor: pointer;
+}
+
+.liked {
+  color: #ff6961;
+}
+
+.actions-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.delete {
+  margin-left: auto;
+}
+
+.delete:hover {
+  cursor: pointer;
+}
